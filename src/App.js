@@ -5,11 +5,26 @@ import UserList from "./components/UserList";
 import "./App.css";
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isModalOpen: false
+    };
+  }
+
+  handleOpenModal = () => this.setState({ isModalOpen: true });
+
+  handleCloseModal = () => this.setState({ isModalOpen: false });
+
   render() {
     return (
       <div className="App">
         <div className="container">
-          <Header />
+          <Header
+            handleOpenModal={this.handleOpenModal}
+            handleCloseModal={this.handleCloseModal}
+          />
           <div className="row mx-auto">
             <div className="col-8">
               <Posts />

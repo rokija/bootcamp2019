@@ -1,9 +1,8 @@
 import React from "react";
-import placeholderImage from "../../media/image-placeholder.svg"
 
-const PostCard = () => (
+const PostCard = ({image}) => (
     <div className="card">
-        <img className="card-img-top" alt="some img" src={placeholderImage}/>
+        <img className="card-img-top" alt="some img" src={image}/>
         <div className="card-body">
             <h2 className="card-title">
                 Title

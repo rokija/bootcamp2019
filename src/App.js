@@ -10,7 +10,10 @@ class App extends Component {
     super();
 
     this.state = {
-      isModalOpen: false
+      isModalOpen: false,
+      caption: null,
+      imageUrl: null,
+      formData: null,
     };
   }
 
@@ -18,13 +21,31 @@ class App extends Component {
 
   handleCloseModal = () => this.setState({ isModalOpen: false });
 
+  onInputChange = e => this.setState({ caption: e.target.value });
+
+  onAddImage = (e) => {
+    const file = e.target.files[0];
+
+    const fileReader = new FileReader();
+    const formData = new FormData();
+
+    formData.append("media", file);
+
+    fileReader.onloadend = () => this.setState({ formData, imageUrl: fileReader.result });
+
+    fileReader.readAsDataURL(file);
+  }
+
+  onClose = () => this.setState({ isModalOpen: false })
+
   render() {
+    const { isModalOpen } = this.state;
+
     return (
       <div className="App">
         <div className="container">
           <Header
             handleOpenModal={this.handleOpenModal}
-            handleCloseModal={this.handleCloseModal}
           />
           <div className="row mx-auto">
             <div className="col-8">
@@ -34,7 +55,13 @@ class App extends Component {
               <UserList />
             </div>
           </div>
-          <PostModal />
+          {isModalOpen && (
+            <PostModal
+              onInputChange={this.onInputChange}
+              onAddImage={this.onAddImage}
+              onClose={this.handleCloseModal}
+            />
+          )}
         </div>
       </div>
     );

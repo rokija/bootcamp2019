@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import Posts from "./components/Posts";
 import UserList from "./components/UserList";
+import PostModal from "./components/PostModal";
 import "./App.css";
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
               <UserList />
             </div>
           </div>
+          <PostModal />
         </div>
       </div>
     );

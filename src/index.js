@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import * as serviceWorker from "./serviceWorker";
 
 const Root = () => (
@@ -12,6 +13,7 @@ const Root = () => (
         <Switch>
             <Route exact path="/" component={App} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
         </Switch>
     </Router>
 )

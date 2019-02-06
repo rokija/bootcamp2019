@@ -1,15 +1,14 @@
 import React from "react";
-import UserCard from "../UserCard";
-import placeholderImage from "../../media/image-placeholder.svg";
+
+/* 
+  TODO: Task 1. 
+  
+  create UserList component from Posts example, import UserCard and reuse it in this component,
+  export it by default export and import in App.js, next to Posts.
+*/
 
 const UserList = () => (
   <div>
-    <UserCard image={placeholderImage} />
-    <UserCard image={placeholderImage} />
-    <UserCard image={placeholderImage} />
-    <UserCard image={placeholderImage} />
-    <UserCard image={placeholderImage} />
+    {/* */}
   </div>
 );
-
-export default UserList;

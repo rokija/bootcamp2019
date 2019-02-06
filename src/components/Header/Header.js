@@ -1,23 +1,15 @@
 import React from "react";
-import logo from "../../media/image-placeholder.svg";
-import "./Header.css";
 
-const Header = ({ handleOpenModal }) => (
-  <div className="Header">
-    <div className="row">
-      <div className="col-md-2">
-        <img className="Header__image" src={logo} alt="something" />
-        <span className="pull-right"> headline </span>
-      </div>
-      <div className="col-md-10">
-        <div className="Header__button">
-          <button onClick={handleOpenModal} className="btn btn-primary">
-            create post
-          </button>
-        </div>
-      </div>
+/*
+    TODO: Task 2. 
+
+    create Header component, create Header.css file and import it.
+    Header component should have a button for uploading a new image.
+    export by default and import Header in App.js.
+*/
+
+const Header = () => (
+    <div>
+        {/* */}
     </div>
-  </div>
-);
-
-export default Header;
+)

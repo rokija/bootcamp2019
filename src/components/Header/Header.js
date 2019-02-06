@@ -1,15 +1,17 @@
 import React from "react";
-
-/*
-    TODO: Task 2. 
-
-    create Header component, create Header.css file and import it.
-    Header component should have a button for uploading a new image.
-    export by default and import Header in App.js.
-*/
+import logo from "../../media/image-placeholder.svg";
+import "./Header.css";
 
 const Header = () => (
-    <div>
-        {/* */}
+    <div className="Header">
+        <div className="Header__title">
+            <img className="Header__title__logo" src={logo} alt="title logo" />
+            <span className="Header__title__headline"> Bootcamp App </span>
+        </div>
+        <div className="Header__button">
+            <button className="btn btn-primary">create post</button>
+        </div>
     </div>
-)
+);
+
+export default Header;

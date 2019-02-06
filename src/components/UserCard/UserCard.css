@@ -1,0 +1,29 @@
+.UserCard {
+    padding: 15px;
+    display: flex;
+}
+
+.UserCard__image {
+    flex: 2;
+    text-align: left;
+}
+
+.UserCard__content {
+    flex: 5;
+    text-align: left;
+}
+  
+.UserCard__image__img {
+    height: 40px;
+    width: 40px;
+    border-radius: 90px;
+    margin-top: 5px;
+}
+
+.UserCard__content__title {
+    font-size: 20px;
+}
+
+.UserCard__content__description {
+    font-size: 13px;
+}

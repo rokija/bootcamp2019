@@ -1,15 +1,13 @@
 import React from "react";
 
-/*
-  TODO: Study 1.
-  create reusable PostCard component which receives image and title through props, 
-  export it and import in Posts.js
-  if not using bootstrap classes, create and import PostCard.css file
-*/
-
-const PostCard = ({ image, title }) => (
-  <div>
-    {/* */}
+const PostCard = ({ image, title, text }) => (
+  <div className="card mb-5">
+    <img className="card-img-top" alt="some img" src={image} />
+    <div className="card-body">
+      <h2 className="card-title">{title}</h2>
+      <span className="card-text">{text}</span>
+    </div>
   </div>
 );
 
+export default PostCard;

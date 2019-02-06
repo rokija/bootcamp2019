@@ -1,15 +1,16 @@
 import React from "react";
+import "./UserCard.css";
 
-/* 
-  TODO: Task 1. 
-  
-  create reusable UserCard component (taking PostCard and Posts as example),
-  pass image through props, export as default export and import in UserList,
-  if needed create and import UserCard.css file.
-*/
-
-const UserCard = ({ image }) => (
-  <div>
-    {/* */}
+const UserCard = ({ image, title, text }) => (
+  <div className="UserCard">
+    <div className="UserCard__image">
+      <img className="UserCard__image__img" src={image} alt="something" />
+    </div>
+    <div className="UserCard__content">
+      <div className="UserCard__content__title">{title}</div>
+      <div className="UserCard__content__description">{text}</div>
+    </div>
   </div>
 );
+
+export default UserCard;

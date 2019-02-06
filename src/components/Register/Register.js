@@ -1,13 +1,21 @@
 import React, { Component } from "react";
-import "./Login.css";
+import "./Register.css";
 
-class Login extends Component {
+
+/*
+    TODO: Study 1.
+
+    using Link element from react-router-dom library add button to redirect to the Login page.
+*/
+
+class Register extends Component {
     constructor() {
         super();
 
         this.state = {
             email: null,
             password: null,
+            username: null,
         }
     }
 
@@ -15,9 +23,19 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="Login">
-                <form className="Login__form">
-                    <h2 className="mb-5">Login</h2>
+            <div className="Register">
+                <form className="Register__form">
+                    <h2 className="mb-5">Register</h2>
+                    <div className="form-group">
+                        <label>username</label>
+                        <input
+                            type="text"
+                            name="username"
+                            className="form-control"
+                            onChange={this.onInputChange}
+                        />
+                    </div>
+
                     <div className="form-group">
                         <label>email</label>
                         <input
@@ -40,7 +58,7 @@ class Login extends Component {
 
                     <div className="mt-5">
                         <button className="btn btn-dark">
-                            login
+                            register
                         </button>
                     </div>
                 </form>
@@ -49,4 +67,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default Register;

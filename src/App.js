@@ -2,28 +2,50 @@ import React, { Component } from "react";
 import Header from "./components/Header/Header";
 import Posts from "./components/Posts/Posts";
 import UserList from "./components/UserList/UserList";
+import PostModal from "./components/PostModal/PostModal";
 import "./App.css";
 
-/*
-  TODO: Study 1. (React State)
-  
-  1. import PostModal component,
-  create default state (isModalOpen: false), create methods (handleOpenModal, handleCloseModal) for setting a new state.
-  display PostModal component only if isModalOpen === true.
-
-  2. create method for updating state with the value from text input (onInputChange),
-    set the default state for it (caption: null).
-
-  3. create method for uploading an image and setting it in the state, 
-    update the default state (set imageUrl and formData to null)
-*/
-
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isModalOpen: false,
+      caption: null,
+      imageUrl: null,
+      formData: null,
+    };
+  }
+
+  handleOpenModal = () => this.setState({ isModalOpen: true });
+
+  handleCloseModal = () => this.setState({ isModalOpen: false });
+
+  onInputChange = e => this.setState({ caption: e.target.value });
+
+  onAddImage = (e) => {
+    const file = e.target.files[0];
+
+    const fileReader = new FileReader();
+    const formData = new FormData();
+
+    formData.append("media", file);
+
+    fileReader.onloadend = () => this.setState({ formData, imageUrl: fileReader.result });
+
+    fileReader.readAsDataURL(file);
+  }
+
+
   render() {
+    const { isModalOpen } = this.state;
+
     return (
       <div className="App">
         <div className="container">
-          <Header />
+          <Header
+            handleOpenModal={this.handleOpenModal}
+          />
           <div className="row mx-auto">
             <div className="col-8">
               <Posts />
@@ -32,6 +54,13 @@ class App extends Component {
               <UserList />
             </div>
           </div>
+          {isModalOpen && (
+            <PostModal
+              onInputChange={this.onInputChange}
+              onAddImage={this.onAddImage}
+              onClose={this.handleCloseModal}
+            />
+          )}
         </div>
       </div>
     );

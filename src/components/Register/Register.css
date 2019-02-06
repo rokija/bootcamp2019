@@ -1,4 +1,4 @@
-.Login {
+.Register {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,7 +6,7 @@
     background-color: rgb(240, 240, 240);
 }
 
-.Login__form {
+.Register__form {
     width: 30%;
     background-color: white;
     padding: 30px;

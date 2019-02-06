@@ -1,7 +1,7 @@
 import React from "react";
 import "./PostModal.css";
 
-const PostModal = () => (
+const PostModal = ({ onClose }) => (
     <div className="PostModal">
         <div className="PostModal__content">
             <div className="PostModal__content__title">upload image</div>
@@ -16,7 +16,12 @@ const PostModal = () => (
                 </div>
             </form>
             <div className="PostModal__buttons">
-                <button className="btn btn-light">cancel</button>
+                <button
+                    className="btn btn-light"
+                    onClick={onClose}
+                >
+                    cancel
+                </button>
                 <button className="btn btn-primary">Upload</button>
             </div>
         </div>

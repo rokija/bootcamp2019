@@ -1,14 +1,9 @@
-/*
-    TODO: Study 4.
+import { combineReducers } from "redux";
+import { loginReducer, registerReducer } from "./user";
 
-    create the rootReducer, use combineReducers function from redux library,
-    it takes in an object with key/value pairs, key should be the name of the piece of state and value the responding reducer,
-    in this case value is registerReducer
-*/
+const rootReducer = combineReducers({
+  loginReducer,
+  registerReducer
+});
 
-
-/*
-    TODO: Task 3.
-
-    import the loginReducer and set it inside the rootReducer.
-*/
+export default rootReducer;

@@ -1,9 +1,9 @@
 import React from "react";
 import placeholderImage from "../../media/image-placeholder.svg";
 
-/* TODO: Study 1.
-  refactor the component exctracting PostCard to a separate component
-  and pass image and title through props to it
+/* TODO: Study 1a.
+  1. refactor the component exctracting PostCard to a separate component
+  2. pass image, title, description through props to it
 */
 
 const Posts = () => (

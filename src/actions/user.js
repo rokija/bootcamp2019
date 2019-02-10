@@ -1,4 +1,3 @@
-import axios from "axios";
 import sha256 from "sha256";
 import {
   API,
@@ -7,8 +6,9 @@ import {
   REGISTER_SUCCESS,
   REGISTER_ERROR
 } from "../constants";
+import BootcampAPI from "../helpers/API";
 
-/* ------ middleware returning actions ------ */
+/* ------ actions ------ */
 const registerSuccess = () => {
   return {
     type: REGISTER_SUCCESS, // type is required for an action
@@ -26,52 +26,53 @@ const registerError = () => {
 const loginSuccess = () => {
   return {
     type: LOGIN_SUCCESS,
-    isLogged: true
+    isLoggedIn: true
   };
 };
 
 const loginError = () => {
   return {
     type: LOGIN_ERROR,
-    isLogged: false
+    isLoggedIn: false
   };
 };
 
 /* ------- action creators ------- */
 export const register = (email, username, password) => {
   return dispatch => {
-    /* dispatch function from redux library */
-    return axios
-      .post(`${API.BASE}${API.REGISTER}`, {
-        email,
-        username,
-        hashedPassword: sha256(password)
-      })
+    /* use dispatch function from redux library */
+    return BootcampAPI.post(API.REGISTER, {
+      email,
+      username,
+      hashedPassword: sha256(password)
+    })
       .then(() => {
         dispatch(registerSuccess()); /* dispatch an action to the reducer */
       })
       .catch(err => {
         console.log("err", err);
         dispatch(registerError());
+        throw err;
       });
   };
 };
 
 export const login = (email, password) => {
   return dispatch => {
-    return axios
-      .post(`${API.BASE}${API.LOGIN}`, {
-        email,
-        hashedPassword: sha256(password)
-      })
+    return BootcampAPI.post(API.LOGIN, {
+      email,
+      hashedPassword: sha256(password)
+    })
       .then(res => {
         const { token } = res.data.payload;
-        localStorage.setItem("jwtToken", token);
+
+        localStorage.setItem("Token", token);
         dispatch(loginSuccess());
       })
       .catch(err => {
         console.log("err", err);
         dispatch(loginError());
+        throw err;
       });
   };
 };

@@ -1,29 +1,42 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import reduxThunk from "redux-thunk";
+import dotenv from "dotenv";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
+import LoginContainer from "./containers/LoginContainer";
+import RegisterContainer from "./containers/RegisterContainer";
+import rootReducer from "./reducers";
 import * as serviceWorker from "./serviceWorker";
 
-/*
-    TODO: Study 5.
+const store = createStore(rootReducer, {}, applyMiddleware(reduxThunk));
+/* docs: https://redux.js.org/api/createstore */
 
-    create store, connect rootReducer and Thunk middleware,
-    wrap the app in Provider tags, pass store to it.
+dotenv.config();
+
+/* TODO: Study 1.
+  1. install package for Protected Route:
+  https://www.npmjs.com/package/react-router-protected-route
+
+  2. a) wrap home route in Protected Route component and display only if token exists in the localStorage
+    b) to do that create validateToken function in helpers/index.js file
 */
 
 const Root = () => (
+  <Provider store={store}>
     <Router>
-        <Switch>
-            <Route exact path="/" component={App} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-        </Switch>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route exact path="/login" component={LoginContainer} />
+        <Route exact path="/register" component={RegisterContainer} />
+      </Switch>
     </Router>
-)
+  </Provider>
+);
 
 ReactDOM.render(<Root />, document.getElementById("root"));
 

@@ -5,23 +5,28 @@ import {
   REGISTER_ERROR
 } from "../constants";
 
-export const loginReducer = (state = {}, action) => {
+const defaultState = {
+  isLoggedIn: false,
+  isRegistered: false
+};
+
+export const loginReducer = (state = defaultState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      return { ...state, ...action.isRegistered };
+      return { ...state, isLoggedIn: action.isLoggedIn };
     case LOGIN_ERROR:
-      return { ...state, ...action.isRegistered };
+      return { ...state, isLoggedIn: action.isLoggedIn };
     default:
       return state;
   }
 };
 
-export const registerReducer = (state = {}, action) => {
+export const registerReducer = (state = defaultState, action) => {
   switch (action.type) {
     case REGISTER_SUCCESS:
-      return { ...state, ...action.isLogged };
+      return { ...state, isRegistered: action.isRegistered };
     case REGISTER_ERROR:
-      return { ...state, ...action.isLogged };
+      return { ...state, isRegistered: action.isRegistered };
     default:
       return state;
   }

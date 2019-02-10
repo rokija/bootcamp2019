@@ -43,11 +43,12 @@ class AppContainer extends Component {
 
   onSubmitPost = () => {
     const { formData, caption } = this.state;
-    const { submitPost } = this.props;
+    const { submitPost, getPosts } = this.props;
 
-    submitPost(formData, caption).then(() =>
-      this.setState({ isModalOpen: false })
-    );
+    submitPost(formData, caption).then(() => {
+      getPosts();
+      this.setState({ isModalOpen: false });
+    });
   };
 
   render() {

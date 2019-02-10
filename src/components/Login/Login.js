@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 class Login extends Component {
@@ -30,6 +31,7 @@ class Login extends Component {
           <div className="form-group">
             <label>email</label>
             <input
+              required
               type="email"
               name="email"
               className="form-control"
@@ -51,6 +53,9 @@ class Login extends Component {
             <button className="btn btn-dark" onClick={this.onClick}>
               login
             </button>
+          </div>
+          <div className="mt-5">
+            <Link to="/register">register here</Link>
           </div>
         </form>
       </div>

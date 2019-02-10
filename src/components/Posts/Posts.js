@@ -7,7 +7,7 @@ const Posts = ({ posts }) => (
       {posts.map(post => (
         <div key={post._id} className="col-12">
           <PostCard
-            image={`${process.env.PUBLIC_URL}${post.media.path}`}
+            image={`http://localhost:3000${post.media.path}`}
             title={post.title}
           />
         </div>

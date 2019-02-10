@@ -1,11 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Register.css";
-
-/*
-    TODO: Study 1.
-
-    using Link element from react-router-dom library add button to redirect to the Login page.
-*/
 
 class Register extends Component {
   constructor() {
@@ -47,7 +42,7 @@ class Register extends Component {
           <div className="form-group">
             <label>email</label>
             <input
-              type="text"
+              type="email"
               name="email"
               className="form-control"
               onChange={this.onInputChange}
@@ -57,7 +52,7 @@ class Register extends Component {
           <div className="form-group">
             <label>password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               className="form-control"
               onChange={this.onInputChange}
@@ -68,6 +63,9 @@ class Register extends Component {
             <button onClick={this.onClick} className="btn btn-dark">
               register
             </button>
+          </div>
+          <div className="mt-5">
+            <Link to="/login">already have an account? go to login</Link>
           </div>
         </form>
       </div>

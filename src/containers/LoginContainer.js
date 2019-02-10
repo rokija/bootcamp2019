@@ -12,17 +12,11 @@ class LoginContainer extends Component {
       return;
     }
 
-    login(email, password);
+    login(email, password).then(() => this.props.history.push("/"));
   };
 
   render() {
-    const { isLoggedIn } = this.props;
-
-    return isLoggedIn ? (
-      <Redirect to="/" />
-    ) : (
-      <Login onSubmit={this.onSubmit} />
-    );
+    return <Login onSubmit={this.onSubmit} />;
   }
 }
 

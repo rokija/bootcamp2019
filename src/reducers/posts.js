@@ -1,9 +1,26 @@
-/* TODO: Study 3. 
-    create postsReducer returning SUBMIT_SUCCESS and SUBMIT_ERROR cases,
-    import postsReducer in the root reducer
-*/
+import {
+  SUBMIT_POST_ERROR,
+  SUBMIT_POST_SUCCESS,
+  LOAD_POSTS_SUCCESS,
+  LOAD_POSTS_ERROR
+} from "../constants";
 
-/* TODO: Task 2.
-    add LOAD_POSTS_SUCCESS and LOAD_POSTS_ERROR cases,
-    sort posts using array reverse() method to display the latest post first.
-*/
+const initialState = {
+  isSubmitted: false,
+  posts: []
+};
+
+export const postsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SUBMIT_POST_SUCCESS:
+      return { ...state, isSubmitted: action.isSubmitted };
+    case SUBMIT_POST_ERROR:
+      return { ...state, isSubmitted: false };
+    case LOAD_POSTS_SUCCESS:
+      return { ...state, posts: action.data };
+    case LOAD_POSTS_ERROR:
+      return { ...state, posts: [] };
+    default:
+      return state;
+  }
+};
